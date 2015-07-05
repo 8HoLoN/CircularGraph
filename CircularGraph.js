@@ -18,16 +18,16 @@
     this.coeffBase = null;// coeff multiply w/ each point
     this.setCoeffBase(typeof _args.coeffBase==='number'?_args.coeffBase:2);
 
+    this.c = (typeof _args.canvas !== 'undefined' && _args.canvas.nodeType === 1 && _args.canvas.nodeName.toLowerCase()==='canvas'?_args.canvas:null);
+    if( this.c===null ){throw new Error('Canvas element is required.');}
+    this.ctx = this.c.getContext("2d");
+
     this.radius = 150;
-    this.offset = 200;
+    this.offset = this.radius+(this.c.width/2-this.radius);
     this.phase = Math.PI/2;// phase trigo
 
     this.alpha = 2*Math.PI/this.cardinality;// angle between each point
     this.sensTrigo = -1;// -1 : trigo, 1 : horaire
-
-    this.c = (typeof _args.canvas !== 'undefined' && _args.canvas.nodeType === 1 && _args.canvas.nodeName.toLowerCase()==='canvas'?_args.canvas:null);
-    if( this.c===null ){throw new Error('Canvas element is required.');}
-    this.ctx = this.c.getContext("2d");
 
     // opts
     this.isDisplayingMarks = (typeof _args.isDisplayingMarks==='boolean'?_args.isDisplayingMarks:false);
