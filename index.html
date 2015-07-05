@@ -13,10 +13,20 @@
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <style type="text/css">
+    #GraphCanvas{
+      width: 305px;
+      height: 305px;
+      border: 0px solid #d3d3d3;
+      margin: 20px;
+    }
+
     @media(max-width:767px){
       .container{
-        padding-right:5px;
+        padding-right: 5px;
         padding-left: 5px;
+      }
+      #GraphCanvas{
+        margin:0px;
       }
     }
     @media(min-width:768px){}
@@ -29,7 +39,7 @@
 <div class="text-center">
   <div ><a class="label label-primary" href="http://8holon.github.io/">8holon.github.io</a></div>
   <h1>Circular Multiplication Graph</h1>
-  <canvas id="GraphCanvas" width="305" height="305" style="width:305px; height:305px; border:0px solid #d3d3d3;">
+  <canvas id="GraphCanvas" width="305" height="305" >
   Your browser does not support the HTML5 canvas tag.</canvas>
   <div class="col-lg-6 col-lg-offset-3">
     <label>Cardinality : </label>
