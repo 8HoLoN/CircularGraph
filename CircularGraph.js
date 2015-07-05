@@ -37,12 +37,13 @@
   _g.CircularGraph = CircularGraph;
 
   CircularGraph.prototype.setCardinality = function(_cardinality) {
-    this.cardinality = _cardinality;
+    this.cardinality = parseInt(_cardinality);
     this.alpha = 2*Math.PI/this.cardinality;
   };
 
   CircularGraph.prototype.setCoeffBase = function(_coeffBase) {
-    this.coeffBase = _coeffBase;
+    this.coeffBase = parseFloat(_coeffBase);
+    //this.coeffBase += '';
   };
 
   CircularGraph.prototype.displayingMarks = function(_isDisplayingMarks) {
