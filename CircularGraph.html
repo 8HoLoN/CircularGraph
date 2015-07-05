@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Circular Graph</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+</head>
+<body class="container">
+
+<div class="text-center">
+  <h1>Circular Multiplication Graph</h1>
+  <canvas id="GraphCanvas" width="400" height="400" style="width:400px; height:400px; border:1px solid #d3d3d3;">
+  Your browser does not support the HTML5 canvas tag.</canvas>
+  <div class="col-lg-6 col-lg-offset-3">
+    <label>Cardinality : </label>
+    <input id='pointsNumber' type="number" style="width:70px;"/>
+    <input id="cardinalityRange" type="range" min="0" max="500" step="1" />
+    <!-- 2000 -->
+  </div>
+
+  <!--<div class="center-block" style="width:500px;">-->
+  <div class="col-lg-6 col-lg-offset-3">
+    <label>Coefficient : </label>
+    <input id='coeffNumber' type="number" max="250" step="0.1" style="width:70px;"/>
+    <input id="coeffRange" type="range" min="0" max="250" step="1" />
+    <!-- 2000 -->
+
+  </div>
+
+</div>
+
+<script type="text/javascript" src="CircularGraph.js"></script>
+<script type="text/javascript">
+  ;(function(){
+    'use strict';
+
+    var circularGraph = new CircularGraph({
+        canvas:document.getElementById("GraphCanvas"),
+        cardinality:414,
+        coeffBase:205,
+        isDisplayingMarks:!true,
+        isDisplayingCircle:!true
+      });
+
+    circularGraph.draw();
+    document.getElementById('pointsNumber').value = circularGraph.cardinality;
+    document.getElementById('coeffNumber').value = circularGraph.coeffBase;
+
+    var cardinalityRange = document.getElementById('cardinalityRange');
+    cardinalityRange.value = circularGraph.cardinality;
+    cardinalityRange.addEventListener('input',function(_i,_j){
+      document.getElementById('pointsNumber').value = this.value;
+      circularGraph.setCardinality(this.value);
+      circularGraph.draw();
+    },false);
+
+    var coeffRange = document.getElementById('coeffRange');
+    coeffRange.value = circularGraph.coeffBase;
+    coeffRange.addEventListener('input',function(_i,_j){
+      document.getElementById('coeffNumber').value = this.value;
+      circularGraph.setCoeffBase(this.value);
+      circularGraph.draw();
+    },false);
+
+    var pointsNumber = document.getElementById('pointsNumber');
+    pointsNumber.addEventListener('input',function(_i,_j){
+      document.getElementById('cardinalityRange').value = this.value;
+      circularGraph.setCardinality(this.value);
+      circularGraph.draw();
+    },false);
+
+    var coeffNumber = document.getElementById('coeffNumber');
+    coeffNumber.addEventListener('input',function(_i,_j){
+      document.getElementById('coeffRange').value = this.value;
+      circularGraph.setCoeffBase(this.value);
+      circularGraph.draw();
+    },false);
+
+  })();
+
+</script>
+</body>
+</html>
