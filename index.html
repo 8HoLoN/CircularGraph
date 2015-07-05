@@ -39,6 +39,10 @@
 <div class="text-center">
   <div ><a class="label label-primary" href="http://8holon.github.io/">8holon.github.io</a></div>
   <h1>Circular Multiplication Graph</h1>
+  <div class="col-lg-6 col-lg-offset-3">
+    <input id='displayPoints' type="checkbox" />
+    <label>Display points</label>
+  </div>
   <canvas id="GraphCanvas" width="305" height="305" >
   Your browser does not support the HTML5 canvas tag.</canvas>
   <div class="col-lg-6 col-lg-offset-3">
@@ -105,6 +109,13 @@
       circularGraph.setCoeffBase(this.value);
       circularGraph.draw();
     },false);
+
+    var displayPoints = document.getElementById('displayPoints');
+    displayPoints.addEventListener('change',function(_i,_j){
+      circularGraph.displayingMarks(this.checked);
+      circularGraph.draw();
+    },false);
+
 
   })();
 

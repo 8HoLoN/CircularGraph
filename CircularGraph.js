@@ -45,6 +45,10 @@
     this.coeffBase = _coeffBase;
   };
 
+  CircularGraph.prototype.displayingMarks = function(_isDisplayingMarks) {
+    this.isDisplayingMarks = _isDisplayingMarks;
+  };
+
   CircularGraph.prototype.draw = function(_points) {
     this.ctx.clearRect(0, 0, this.c.width, this.c.height);
     this.ctx.beginPath();
@@ -55,7 +59,7 @@
       this.ctx.arc(this.offset,this.offset,this.radius,0,Math.PI*2,true);
     }
 
-    var marksRadius = 5;
+    var marksRadius = 0.5;
     var _cosFrom = null;
     var _cosTo = null;
     var _sinFrom = null;
