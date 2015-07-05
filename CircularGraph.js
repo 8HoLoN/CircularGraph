@@ -22,7 +22,7 @@
     if( this.c===null ){throw new Error('Canvas element is required.');}
     this.ctx = this.c.getContext("2d");
 
-    this.radius = 150;
+    this.radius = (typeof _args.radius==='number'?_args.radius:150);
     this.offset = this.radius+(this.c.width/2-this.radius);
     this.phase = Math.PI/2;// phase trigo
 
