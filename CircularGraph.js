@@ -66,7 +66,11 @@
     var _sinFrom = null;
     var _sinTo = null;
 
+    var _radius = this.radius;
     for(var i=0;i<this.cardinality;i++){
+      //this.radius = _radius*(Math.sin(5/7*Math.PI*i/(this.cardinality-1)));// i/this.cardinality-1
+      //this.radius = _radius*(Math.sin(3*Math.PI*i/(this.cardinality-1)));
+
       _cosFrom = Math.cos(i*this.alpha+this.phase)*this.radius+this.offset;
       _cosTo = Math.cos((i*this.coeffBase)*this.alpha+this.phase)*this.radius+this.offset;
       _sinFrom = this.sensTrigo*Math.sin(i*this.alpha+this.phase)*this.radius+this.offset;
@@ -82,6 +86,7 @@
       this.ctx.moveTo(_cosFrom, _sinFrom);
       this.ctx.lineTo(_cosTo, _sinTo);
     }
+    this.radius = _radius;
 
     this.ctx.stroke();
   }

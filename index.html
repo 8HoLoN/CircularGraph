@@ -45,6 +45,8 @@
   <div class="col-lg-6 col-lg-offset-3">
     <input id='displayPoints' type="checkbox" />
     <label>Display points</label>
+    <input id='animateCheckbox' type="checkbox" />
+    <label>Animate</label>
   </div>
   <canvas id="GraphCanvas" width="305" height="305" >
   Your browser does not support the HTML5 canvas tag.</canvas>
@@ -58,7 +60,7 @@
   <!--<div class="center-block" style="width:500px;">-->
   <div class="col-lg-6 col-lg-offset-3">
     <label>Coefficient : </label>
-    <input id='coeffNumber' type="number" max="250" step="0.1" style="width:70px;"/>
+    <input id='coeffNumber' type="number" max="250" step="0.01" style="width:70px;"/>
     <input id="coeffRange" type="range" min="0" max="250" step="1" />
     <!-- 2000 -->
 
@@ -120,6 +122,27 @@
       circularGraph.draw();
     },false);
 
+    var animateTimerHandler = null;
+    var animateCheckbox = document.getElementById('animateCheckbox');
+    animateCheckbox.addEventListener('change',function(_i,_j){
+      if( this.checked ){
+        animateTimerHandler = setInterval(function(){
+          animate();
+        },1000/60);
+      }else{
+        clearInterval(animateTimerHandler);
+      }
+
+    },false);
+
+    function animate () {
+      var _value = document.getElementById('coeffNumber').value;
+      _value=parseFloat(_value)+0.002;
+      circularGraph.setCoeffBase(_value);
+      document.getElementById('coeffNumber').value = _value;
+      document.getElementById('coeffRange').value = _value;
+      circularGraph.draw();
+    }
 
   })();
 
