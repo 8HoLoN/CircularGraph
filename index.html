@@ -13,6 +13,9 @@
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <style type="text/css">
+    .inline-block{
+      display: inline-block;
+    }
     #GraphCanvas{
       width: 305px;
       height: 305px;
@@ -43,10 +46,18 @@
   <div ><a class="label label-primary" href="http://8holon.github.io/">8holon.github.io</a></div>
   <h1>Circular Multiplication Graph</h1>
   <div class="col-lg-6 col-lg-offset-3">
-    <input id='displayPoints' type="checkbox" />
-    <label for='displayPoints' >Display points</label>
-    <input id='animateCheckbox' type="checkbox" />
+    <span class='inline-block' >
+      <input id='displayPoints' type="checkbox" />
+      <label for='displayPoints' >Display points</label>
+    </span>
+    <span class='inline-block' >
+      <input id='animateCheckbox' type="checkbox" />
     <label for='animateCheckbox' >Animate</label>
+    </span>
+    <span class='inline-block' >
+      <input id='spiralModeCheckbox' type="checkbox" />
+      <label for='spiralModeCheckbox' >Spiral Mode</label>
+    </span>
   </div>
   <canvas id="GraphCanvas" width="305" height="305" >
   Your browser does not support the HTML5 canvas tag.</canvas>
@@ -143,6 +154,13 @@
       document.getElementById('coeffRange').value = _value;
       circularGraph.draw();
     }
+
+    var spiralMode = document.getElementById('spiralModeCheckbox');
+    spiralMode.addEventListener('change',function(_i,_j){
+      circularGraph.setSpiralMode(this.checked);
+      circularGraph.draw();
+    },false);
+
 
   })();
 

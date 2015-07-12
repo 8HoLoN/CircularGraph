@@ -32,6 +32,8 @@
     // opts
     this.isDisplayingMarks = (typeof _args.isDisplayingMarks==='boolean'?_args.isDisplayingMarks:false);
     this.isDisplayingCircle = (typeof _args.isDisplayingCircle==='boolean'?_args.isDisplayingCircle:false);
+
+    this.spiralMode = false;
   }
 
   _g.CircularGraph = CircularGraph;
@@ -48,6 +50,10 @@
 
   CircularGraph.prototype.displayingMarks = function(_isDisplayingMarks) {
     this.isDisplayingMarks = _isDisplayingMarks;
+  };
+
+  CircularGraph.prototype.setSpiralMode = function(_spiralMode) {
+    this.spiralMode = _spiralMode;
   };
 
   CircularGraph.prototype.draw = function(_points) {
@@ -68,7 +74,9 @@
 
     var _radius = this.radius;
     for(var i=0;i<this.cardinality;i++){
-      //this.radius = _radius*(Math.sin(5/7*Math.PI*i/(this.cardinality-1)));// i/this.cardinality-1
+      if( this.spiralMode ){
+        this.radius = _radius*(Math.sin(5/7*Math.PI*i/(this.cardinality-1)));// i/this.cardinality-1
+      }
       //this.radius = _radius*(Math.sin(3*Math.PI*i/(this.cardinality-1)));
 
       _cosFrom = Math.cos(i*this.alpha+this.phase)*this.radius+this.offset;
