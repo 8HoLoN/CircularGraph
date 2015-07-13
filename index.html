@@ -13,10 +13,22 @@
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <style type="text/css">
-    .inline-block{
+    .inline-block {
       display: inline-block;
     }
-    #GraphCanvas{
+    .noselect {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -o-user-select: none;
+      user-select: none;
+    }
+    .hand-cursor{
+      cursor: pointer;
+    }
+    #GraphCanvas {
       width: 305px;
       height: 305px;
       border: 0px solid #d3d3d3;
@@ -24,14 +36,14 @@
     }
 
     @media(max-width:767px){
-      body{
+      body {
         margin-bottom:10px;
       }
-      .container{
+      .container {
         padding-right: 5px;
         padding-left: 5px;
       }
-      #GraphCanvas{
+      #GraphCanvas {
         margin:0px;
       }
     }
@@ -40,23 +52,23 @@
     @media(min-width:1200px){}
   </style>
 </head>
-<body class="container">
+<body class="container noselect">
 
 <div class="text-center">
   <div ><a class="label label-primary" href="http://8holon.github.io/">8holon.github.io</a></div>
   <h1>Circular Multiplication Graph</h1>
   <div class="col-lg-6 col-lg-offset-3">
-    <span class='inline-block' >
-      <input id='displayPoints' type="checkbox" />
-      <label for='displayPoints' >Display points</label>
+    <span class='inline-block hand-cursor' >
+      <input id='displayPoints' type="checkbox" class='hand-cursor'/>
+      <label for='displayPoints' class='hand-cursor' >Display points</label>
     </span>
-    <span class='inline-block' >
-      <input id='animateCheckbox' type="checkbox" />
-      <label for='animateCheckbox' >Animate</label>
+    <span class='inline-block hand-cursor' >
+      <input id='animateCheckbox' type="checkbox" class='hand-cursor' />
+      <label for='animateCheckbox' class='hand-cursor' >Animate</label>
     </span>
-    <span class='inline-block' >
-      <input id='spiralModeCheckbox' type="checkbox" />
-      <label for='spiralModeCheckbox' >Spiral Mode</label>
+    <span class='inline-block hand-cursor' >
+      <input id='spiralModeCheckbox' type="checkbox" class='hand-cursor' />
+      <label for='spiralModeCheckbox' class='hand-cursor' >Spiral Mode</label>
     </span>
   </div>
   <canvas id="GraphCanvas" width="305" height="305" >
