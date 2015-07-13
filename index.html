@@ -12,44 +12,10 @@
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-  <style type="text/css">
-    .inline-block {
-      display: inline-block;
-    }
-    .noselect {
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      -o-user-select: none;
-      user-select: none;
-    }
-    .hand-cursor{
-      cursor: pointer;
-    }
-    #GraphCanvas {
-      width: 305px;
-      height: 305px;
-      border: 0px solid #d3d3d3;
-      margin: 20px;
-    }
 
-    @media(max-width:767px){
-      body {
-        margin-bottom:10px;
-      }
-      .container {
-        padding-right: 5px;
-        padding-left: 5px;
-      }
-      #GraphCanvas {
-        margin:0px;
-      }
-    }
-    @media(min-width:768px){}
-    @media(min-width:992px){}
-    @media(min-width:1200px){}
+  <link rel="stylesheet" href="style.css">
+  <style type="text/css">
+
   </style>
 </head>
 <body class="container noselect">
@@ -92,89 +58,8 @@
 </div>
 
 <script type="text/javascript" src="CircularGraph.js"></script>
+<script type="text/javascript" src="script.js"></script>
 <script type="text/javascript">
-  ;(function(){
-    'use strict';
-
-    var circularGraph = new CircularGraph({
-        canvas:document.getElementById("GraphCanvas"),
-        cardinality:414,
-        coeffBase:205,
-        radius:150,
-        isDisplayingMarks:!true,
-        isDisplayingCircle:!true
-      });
-
-    circularGraph.draw();
-    document.getElementById('pointsNumber').value = circularGraph.cardinality;
-    document.getElementById('coeffNumber').value = circularGraph.coeffBase;
-
-    var cardinalityRange = document.getElementById('cardinalityRange');
-    cardinalityRange.value = circularGraph.cardinality;
-    cardinalityRange.addEventListener('input',function(_i,_j){
-      document.getElementById('pointsNumber').value = this.value;
-      circularGraph.setCardinality(this.value);
-      circularGraph.draw();
-    },false);
-
-    var coeffRange = document.getElementById('coeffRange');
-    coeffRange.value = circularGraph.coeffBase;
-    coeffRange.addEventListener('input',function(_i,_j){
-      document.getElementById('coeffNumber').value = this.value;
-      circularGraph.setCoeffBase(this.value);
-      circularGraph.draw();
-    },false);
-
-    var pointsNumber = document.getElementById('pointsNumber');
-    pointsNumber.addEventListener('input',function(_i,_j){
-      document.getElementById('cardinalityRange').value = this.value;
-      circularGraph.setCardinality(this.value);
-      circularGraph.draw();
-    },false);
-
-    var coeffNumber = document.getElementById('coeffNumber');
-    coeffNumber.addEventListener('input',function(_i,_j){
-      document.getElementById('coeffRange').value = this.value;
-      circularGraph.setCoeffBase(this.value);
-      circularGraph.draw();
-    },false);
-
-    var displayPoints = document.getElementById('displayPoints');
-    displayPoints.addEventListener('change',function(_i,_j){
-      circularGraph.displayingMarks(this.checked);
-      circularGraph.draw();
-    },false);
-
-    var animateTimerHandler = null;
-    var animateCheckbox = document.getElementById('animateCheckbox');
-    animateCheckbox.addEventListener('change',function(_i,_j){
-      if( this.checked ){
-        animateTimerHandler = setInterval(function(){
-          animate();
-        },1000/60);
-      }else{
-        clearInterval(animateTimerHandler);
-      }
-
-    },false);
-
-    function animate () {
-      var _value = document.getElementById('coeffNumber').value;
-      _value=parseFloat(_value)+0.002;
-      circularGraph.setCoeffBase(_value);
-      document.getElementById('coeffNumber').value = _value;
-      document.getElementById('coeffRange').value = _value;
-      circularGraph.draw();
-    }
-
-    var spiralMode = document.getElementById('spiralModeCheckbox');
-    spiralMode.addEventListener('change',function(_i,_j){
-      circularGraph.setSpiralMode(this.checked);
-      circularGraph.draw();
-    },false);
-
-
-  })();
 
 </script>
 </body>

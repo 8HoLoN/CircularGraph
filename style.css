@@ -1,0 +1,37 @@
+.inline-block {
+  display: inline-block;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.hand-cursor{
+  cursor: pointer;
+}
+#GraphCanvas {
+  width: 305px;
+  height: 305px;
+  border: 0px solid #d3d3d3;
+  margin: 20px;
+}
+
+@media(max-width:767px){
+  body {
+    margin-bottom:10px;
+  }
+  .container {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  #GraphCanvas {
+    margin:0px;
+  }
+}
+@media(min-width:768px){}
+@media(min-width:992px){}
+@media(min-width:1200px){}
